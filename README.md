@@ -15,7 +15,7 @@ We use [`yarn`](https://classic.yarnpkg.com/en/docs/install#mac-stable) as our p
 The basic commands to get this repository and start are:
 
 ```
-$ git clone https://github.com/UCLA-Creative-Labs/.git
+$ git clone https://github.com/UCLA-Creative-Labs/tinycl.git
 $ cd tinycl
 $ yarn install
 $ yarn dev
