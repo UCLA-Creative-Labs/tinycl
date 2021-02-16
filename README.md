@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# tinycl
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+[![Mergify Status][mergify-status]][mergify]
+
+[mergify]: https://mergify.io
+[mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/UCLA-Creative-Labs/tinycl&style=flat
+
+This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md). By participating, you are 
+expected to uphold this code. Please report unacceptable behavior to uclacreatives@gmail.com.
 
 ## Getting Started
 
-First, run the development server:
+We use [`yarn`](https://classic.yarnpkg.com/en/docs/install#mac-stable) as our package manager.
 
-```bash
-npm run dev
-# or
-yarn dev
+The basic commands to get this repository and start are:
+
+```
+$ git clone https://github.com/UCLA-Creative-Labs/.git
+$ cd tinycl
+$ yarn install
+$ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you run into an issue, feel free to make an issue [here](https://github.com/UCLA-Creative-Labs/tinycl/issues).
+If you have a fix, even better! Check out the follow section to learn how to contribute!
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Contributing
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Thanks for your interest in contributing to `tinycl`! ❤️
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Here's a quick guide on how to get started.
 
-## Learn More
+1. [Fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) the repository or checkout a branch; `master` is protected and is managed through our pipeline.
+2. Create an issue and/or mark an existing one to let everyone know that you are working your magic ⚡️
+3. Beep boop away!
+4. **Before you push**, it's always a good idea to check that your changes follow our linter rules! Run `yarn lint` at the root directory and watch it judge your code. 
+5. Stage, commit, and push your changes to make a [pull request](https://github.com/UCLA-Creative-Labs/tinycl/pulls)!
+6. A maintainer will review your code and if it passes all the checks, your contribution will be merged on to `master` 🥳
 
-To learn more about Next.js, take a look at the following resources:
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [DESIGN_GUIDELINES.md](DESIGN_GUIDELINES.md) for more info.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Getting Help
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you ever need help with a feature or bug fix, no worries! Feel free to mark the issue as 
+`guidance` so that our maintainers can start thinking about a solution. If you are 
+comfortable making a [draft pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request),
+you can also tag the tinycl team in a comment: `@UCLA-Creative-Labs/tech`!
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT](LICENSE.md)
