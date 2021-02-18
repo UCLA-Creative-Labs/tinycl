@@ -3,21 +3,21 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/Page.module.scss';
-import {capitalize} from '../utils';
+import {capitalize, PageProps} from '../utils';
 
-export default function Home(props): JSX.Element {
+export default function Page(props: PageProps): JSX.Element {
   const [links] = useState(props.links);
   const router = useRouter();
   const { path } = router.query;
 
   return (
-    <Layout 
+    <Layout
       content={(
         <div id={styles.container}>
           <h1>Creative Labs {typeof(path) === 'string' && `| ${capitalize(path)}`}</h1>
-            {links && links.map(({link, path}) => (
-              <a target='_blank' href={link}>{path}</a>
-            ))}
+          {links && links.map((link, i) => (
+            <a rel="noreferrer" target='_blank' href={link.link} key={i}>{link.path}</a>
+          ))}
         </div>
       )}
     />
@@ -31,4 +31,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const data = await res.json();
   const links = data?.links?.filter((link) => link.page === path) ?? null;
   return { props: { links } };
-}
+};

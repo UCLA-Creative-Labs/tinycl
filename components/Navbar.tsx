@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import styles from '../styles/Navbar.module.scss';
@@ -24,12 +24,11 @@ function Navbar(): JSX.Element {
       </div>
 
       <div id={styles.navigation}>
-        {pages.map((page) => 
-          <a href={page.toLowerCase()}>{page}</a>
+        {pages.map((page, i) =>
+          <a href={page.toLowerCase()} key={i}>{page}</a>,
         )}
       </div>
     </nav>
-
   );
 }
 

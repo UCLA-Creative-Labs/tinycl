@@ -4,7 +4,7 @@ import { db } from '../../utils/firebase';
 
 let links;
 
-db.collection('links').get().then(snapshot => {
+void db.collection('links').get().then(snapshot => {
   links = snapshot.docs.map(doc => doc.data());
 });
 
