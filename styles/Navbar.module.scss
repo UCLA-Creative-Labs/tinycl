@@ -1,0 +1,44 @@
+@import 'variables';
+
+#navbar {
+  display: flex;
+  align-items: center;
+  height: $navbar-height;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+}
+
+#navigation {
+  text-align: right;
+  flex: 1;
+  justify-content: center;
+  margin-right: 5%;
+  margin-left: auto;
+  color: map-get($colors, navbarText);
+  transition: color $navbar-transition;
+}
+
+#back {
+  display: flex;
+  align-items: center;
+  padding-left: $padding-horiz;
+  text-align: left;
+  cursor: pointer;
+}
+
+#navigation a {
+  padding-left: 6%;
+  cursor: pointer;
+}
+
+#back_arrow {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  background-image: url('../public/back_arrow.svg');
+}
+
+.hide {
+  visibility: hidden;
+}
