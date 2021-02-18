@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "npx eslint '**/*.tsx' '**/*.ts' && npx stylelint '**/*.css' '**/*.scss'",
-    "no-lock": "scripts/noPackageLock.sh"
+    "no-lock": "scripts/noPackageLock.sh",
+    "test": "npm run build"
   },
   "dependencies": {
     "firebase": "^8.2.7",

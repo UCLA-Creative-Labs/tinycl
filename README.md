@@ -1,6 +1,7 @@
 # tinycl
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 [![Mergify Status][mergify-status]][mergify]
+[![Build Status](https://travis-ci.com/UCLA-Creative-Labs/tinycl.svg?branch=main)](https://travis-ci.com/UCLA-Creative-Labs/tinycl)
 
 [mergify]: https://mergify.io
 [mergify-status]: https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/UCLA-Creative-Labs/tinycl&style=flat
