@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+
+# production
+/build
+
+# misc
+.vscode/
+.DS_Store
+*.pem
+*.swp
+log/
+
+# vercel
+.vercel
