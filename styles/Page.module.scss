@@ -1,0 +1,9 @@
+@import 'variables';
+
+#container {
+  margin-top: calc(#{$navbar-height});
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - #{$navbar-height});
+}

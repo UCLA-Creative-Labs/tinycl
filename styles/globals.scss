@@ -1,19 +1,32 @@
-html,
+@import 'variables';
+
 body {
   padding: 0;
   margin: 0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    Fira Sans,
-    Droid Sans,
-    Helvetica Neue,
-    sans-serif;
+  font: $body-reg-font;
+  background-color: map-get($colors, splashBgDay);
+}
+
+div {
+  color: #000;
+}
+
+h1 {
+  font: $heading-xbold-font;
+  letter-spacing: $heading-kerning;
+}
+
+h2 {
+  font: $heading-bold-font;
+  letter-spacing: $heading-kerning;
+}
+
+h3 {
+  font: $body-bold-font;
+}
+
+p {
+  line-height: 1.6em;
 }
 
 a {
@@ -21,6 +34,7 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+.logotype {
+  font: $logo-font;
+  letter-spacing: $logo-kerning;
 }
