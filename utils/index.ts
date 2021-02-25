@@ -3,12 +3,38 @@ export function capitalize(str: string): string {
 }
 
 export interface Link {
-  link: string,
-  page: string,
-  path: string,
-  rank: number,
+  displayName: string;
+  url: string;
+  redirectPath: string;
 }
 
 export interface PageProps {
-  links: Link[] | undefined
+  pageName?: string;
+  links?: Link[];
+  redirect?: boolean;
 }
+
+export const linksQuery = `{
+  linkCollection {
+    items {
+      displayName
+      url
+      redirectPath
+    }
+  }
+}`;
+
+export const pageQuery = `{
+  pageCollection {
+    items {
+      pageName
+      linksCollection {
+        items {
+          displayName
+          url
+          redirectPath
+        }
+      }
+    }
+  }
+}`;
