@@ -6,7 +6,7 @@ import {Link, PageProps} from '../utils';
 import {pageQuery} from '../utils/index';
 
 export default function Home(props: PageProps): JSX.Element {
-  const {pageName, links} = props;
+  const {links} = props;
 
   return (
     <Layout
@@ -35,8 +35,8 @@ export const getStaticProps: GetStaticProps = async () => {
     },
     body: JSON.stringify({query: pageQuery}),
   });
-  const {data, error} = await res.json();
-  const page = data.pageCollection.items.find(({pageName}) => pageName === "Home");
+  const {data} = await res.json();
+  const page = data.pageCollection.items.find(({pageName}) => pageName === 'Home');
   return { props: {
     pageName: page?.pageName,
     links: page?.linksCollection?.items,
