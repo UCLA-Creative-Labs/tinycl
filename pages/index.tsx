@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import React from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/Page.module.scss';
-import {Link, PageProps} from '../utils';
+import {fetchContentful, Link, PageProps} from '../utils';
 import {pageQuery} from '../utils/index';
 
 export default function Home(props: PageProps): JSX.Element {
@@ -27,14 +27,7 @@ export default function Home(props: PageProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({query: pageQuery}),
-  });
+  const res = await fetchContentful(pageQuery);
   const {data} = await res.json();
   const page = data.pageCollection.items.find(({pageName}) => pageName === 'Home');
   return { props: {

@@ -1,13 +1,9 @@
-
-//Get the links and filter to the corresponding link
-// Redirect to the actual link
-
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../components/Layout';
 import styles from '../../styles/Page.module.scss';
-import {linksQuery} from '../../utils';
+import {linksQuery, fetchContentful} from '../../utils';
 
 export default function LinkPage(): JSX.Element {
   const router = useRouter();
@@ -20,7 +16,7 @@ export default function LinkPage(): JSX.Element {
     <Layout
       content={(
         <div id={styles.container}>
-          go back to home
+          <a href="/">go back to home</a>
         </div>
       )}
     />
@@ -29,14 +25,7 @@ export default function LinkPage(): JSX.Element {
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res}) => {
   const {link} = params;
-  const contentfulRes = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({query: linksQuery(link)}),
-  });
+  const contentfulRes = await fetchContentful(linksQuery(link));
   const {data} = await contentfulRes.json();
   const linkData = data?.linkCollection?.items;
 

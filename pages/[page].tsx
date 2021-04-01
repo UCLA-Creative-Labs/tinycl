@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/Page.module.scss';
-import {Link, pageQuery, PageProps} from '../utils';
+import {Link, pageQuery, PageProps, fetchContentful} from '../utils';
 
 export default function Page(props: PageProps): JSX.Element {
   const {pageName, links, redirect} = props;
@@ -32,14 +32,7 @@ export default function Page(props: PageProps): JSX.Element {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({query: pageQuery}),
-  });
+  const res = await fetchContentful(pageQuery);
   const {data} = await res.json();
   const paths = data?.pageCollection?.items.map(({pageName}) => ({
     params: {page: pageName},
@@ -50,14 +43,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const {page} = params;
-  const res = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({query: pageQuery}),
-  });
+  const res = await fetchContentful(pageQuery);
   const {data} = await res.json();
   const pageData = data?.pageCollection?.items.find(({pageName}) => pageName === page);
   return { props: {

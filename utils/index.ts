@@ -36,3 +36,16 @@ export const pageQuery = `{
     }
   }
 }`;
+
+export async function fetchContentful (queryInfo) {
+  const res = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+    body: JSON.stringify({query: queryInfo}),
+  });
+
+  return res;
+}
