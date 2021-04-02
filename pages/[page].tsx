@@ -1,33 +1,19 @@
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
-import Layout from '../components/Layout';
-import styles from '../styles/Page.module.scss';
-import {Link, pageQuery, PageProps, fetchContentful} from '../utils';
+import PageTemplate from '../components/PageTemplate';
+import {pageQuery, PageProps, fetchContentful} from '../utils';
 
 export default function Page(props: PageProps): JSX.Element {
   const {pageName, links, redirect} = props;
   const router = useRouter();
 
-  if (redirect || (typeof window !== 'undefined')) {
+  if (redirect || typeof window !== 'undefined') {
     void router.push('/');
   }
 
   return (
-    <Layout
-      content={(
-        <div id={styles.container}>
-          <h1>{pageName}</h1>
-          <ul>
-            {links && links.map(({displayName, url}: Link, i) => (
-              <li key={i}>
-                <a rel="noreferrer" target='_blank' href={url} key={i}>{displayName}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    />
+    <PageTemplate pageName = {pageName} links = {links} redirect = {redirect} />
   );
 }
 
@@ -37,7 +23,7 @@ export async function getStaticPaths() {
     params: {page: pageName},
   }));
 
-  return {paths, fallback:false};
+  return {paths, fallback: false};
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

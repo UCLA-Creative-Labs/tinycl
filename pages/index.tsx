@@ -1,28 +1,13 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import Layout from '../components/Layout';
-import styles from '../styles/Page.module.scss';
-import {fetchContentful, Link, PageProps} from '../utils';
+import PageTemplate from '../components/PageTemplate';
+import {fetchContentful, PageProps} from '../utils';
 import {pageQuery} from '../utils/index';
 
 export default function Home(props: PageProps): JSX.Element {
-  const {links} = props;
 
   return (
-    <Layout
-      content={(
-        <div id={styles.container}>
-          <h1>Creative Labs</h1>
-          <ul>
-            {links && links.map(({displayName, url}: Link, i) => (
-              <li key={i}>
-                <a rel="noreferrer" target='_blank' href={url} key={i}>{displayName}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    />
+    <PageTemplate pageName = "Creative Labs" links = {props.links} redirect = {props.redirect} />
   );
 }
 

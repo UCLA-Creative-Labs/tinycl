@@ -48,6 +48,6 @@ export async function fetchContentful (queryInfo) {
   });
 
   const {data} = await res.json();
-  
+
   return data;
 }
