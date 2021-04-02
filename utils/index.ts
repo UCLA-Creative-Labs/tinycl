@@ -47,5 +47,7 @@ export async function fetchContentful (queryInfo) {
     body: JSON.stringify({query: queryInfo}),
   });
 
-  return res;
+  const {data} = await res.json();
+  
+  return data;
 }

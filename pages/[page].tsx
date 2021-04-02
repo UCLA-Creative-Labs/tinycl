@@ -9,7 +9,7 @@ export default function Page(props: PageProps): JSX.Element {
   const {pageName, links, redirect} = props;
   const router = useRouter();
 
-  if (redirect || (typeof window !== 'undefined' && router.isFallback)) {
+  if (redirect || (typeof window !== 'undefined')) {
     void router.push('/');
   }
 
@@ -32,19 +32,17 @@ export default function Page(props: PageProps): JSX.Element {
 }
 
 export async function getStaticPaths() {
-  const res = await fetchContentful(pageQuery);
-  const {data} = await res.json();
+  const data = await fetchContentful(pageQuery);
   const paths = data?.pageCollection?.items.map(({pageName}) => ({
     params: {page: pageName},
   }));
 
-  return {paths, fallback: true};
+  return {paths, fallback:false};
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const {page} = params;
-  const res = await fetchContentful(pageQuery);
-  const {data} = await res.json();
+  const data = await fetchContentful(pageQuery);
   const pageData = data?.pageCollection?.items.find(({pageName}) => pageName === page);
   return { props: {
     pageName: pageData?.pageName,

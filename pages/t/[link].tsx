@@ -25,12 +25,10 @@ export default function LinkPage(): JSX.Element {
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res}) => {
   const {link} = params;
-  const contentfulRes = await fetchContentful(linksQuery(link));
-  const {data} = await contentfulRes.json();
+  const data = await fetchContentful(linksQuery(link));
   const linkData = data?.linkCollection?.items;
 
-  if(linkData.length)
-  {
+  if(linkData.length){
     res.writeHead(301, {location: linkData[0].url} );
     res.end();
   }

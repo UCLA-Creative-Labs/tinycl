@@ -27,8 +27,7 @@ export default function Home(props: PageProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchContentful(pageQuery);
-  const {data} = await res.json();
+  const data = await fetchContentful(pageQuery);
   const page = data.pageCollection.items.find(({pageName}) => pageName === 'Home');
   return { props: {
     pageName: page?.pageName,
