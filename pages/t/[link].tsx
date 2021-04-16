@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res}) => 
   }
   else
   {
-    res.writeHead(301, "/");
+    res.writeHead(301, {location: "/"});
     res.end();
   }
 
