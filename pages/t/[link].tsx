@@ -8,7 +8,7 @@ import {linksQuery, fetchContentful} from '../../utils';
 export default function LinkPage(): JSX.Element {
   const router = useRouter();
 
-  void router.push('/');
+  // void router.push('/');
 
   return (
     <Layout
