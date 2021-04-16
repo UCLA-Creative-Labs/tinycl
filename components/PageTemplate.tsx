@@ -9,10 +9,6 @@ export default function PageTemplate(props: PageProps): JSX.Element {
   const {pageName, links, redirect} = props;
   const router = useRouter();
 
-  if (router.pathname !== '/' && (redirect || (typeof window !== 'undefined'))) {
-    void router.push('/');
-  }
-
   return (
     <Layout
       content={(
