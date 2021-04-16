@@ -1,19 +1,11 @@
 import { GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 import React from 'react';
 import PageTemplate from '../components/PageTemplate';
 import {pageQuery, PageProps, fetchContentful} from '../utils';
 
 export default function Page(props: PageProps): JSX.Element {
-  const {pageName, links, redirect} = props;
-  const router = useRouter();
-
-  if (redirect || typeof window !== 'undefined') {
-    void router.push('/');
-  }
-
   return (
-    <PageTemplate pageName = {pageName} links = {links} redirect = {redirect} />
+    <PageTemplate pageName = {props.pageName} links = {props.links} redirect = {props.redirect} />
   );
 }
 

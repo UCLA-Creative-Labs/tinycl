@@ -2,9 +2,16 @@ import React from 'react';
 import {Link, PageProps} from '../utils';
 import Layout from './Layout';
 import styles from '../styles/Page.module.scss';
+import { useRouter } from 'next/router';
 
 export default function PageTemplate(props: PageProps): JSX.Element {
-  const {pageName, links} = props;
+
+  const {pageName, links, redirect} = props;
+  const router = useRouter();
+
+  if (router.pathname !== '/' && (redirect || (typeof window !== 'undefined'))) {
+    void router.push('/');
+  }
 
   return (
     <Layout
