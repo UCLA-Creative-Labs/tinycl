@@ -33,6 +33,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res}) => 
   else
   {
     res.writeHead(404);
+    res.end();
   }
 
   return {props: {}};
