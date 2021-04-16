@@ -8,7 +8,7 @@ import {linksQuery, fetchContentful} from '../../utils';
 export default function LinkPage(): JSX.Element {
   const router = useRouter();
 
-  // void router.push('/');
+  void router.push('/');
 
   return (
     <Layout
@@ -30,11 +30,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res}) => 
     res.writeHead(301, {location: linkData[0].url} );
     res.end();
   }
-  else
-  {
-    res.writeHead(404);
-    res.end();
-  }
+  // else
+  // {
+  //   res.writeHead(404);
+  //   res.end();
+  // }
 
   return {props: {}};
 };
