@@ -30,11 +30,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res}) => 
     res.writeHead(301, {location: linkData[0].url} );
     res.end();
   }
-  // else
-  // {
-  //   res.writeHead(404);
-  //   res.end();
-  // }
+  else
+  {
+    res.writeHead(301, "/");
+    res.end();
+  }
 
   return {props: {}};
 };
