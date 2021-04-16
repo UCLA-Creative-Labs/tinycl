@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const {page} = params;
   const data = await fetchContentful(pageQuery);
-  const pageData = data?.pageCollection?.items.find(({pageName}) => pageName.toLowerCase() === page);
+  const pageData = data?.pageCollection?.items.find(({pageName}) => pageName === page);
   return { props: {
     pageName: pageData?.pageName,
     links: pageData?.linksCollection?.items,
