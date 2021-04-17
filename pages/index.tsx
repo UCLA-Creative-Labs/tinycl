@@ -15,7 +15,7 @@ export default function Home(props: PageProps): JSX.Element {
           <ul>
             {links && links.map((link, i) => (
               <li key={i}>
-                <a rel="noreferrer" target='_blank' href={link.link} key={i}>{link.path}</a>
+                <a rel="noreferrer" target='_blank' href="https://www.creativelabsucla.com/" key={i}>Example</a>
               </li>
             ))}
           </ul>
@@ -26,8 +26,9 @@ export default function Home(props: PageProps): JSX.Element {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch('http://localhost:3000/api/links');
-  const data = await res.json();
-  const links = data?.links?.filter((link) => link.page === 'index') ?? null;
+  //const res = await fetch('http://localhost:3000/api/links');
+  //const data = await res.json();
+  //const links = data?.links?.filter((link) => link.page === 'index') ?? null;
+  const links = ["https://www.example.com/"];
   return { props: { links } };
 };

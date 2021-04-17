@@ -1,0 +1,40 @@
+@import 'variables';
+
+.block {
+    background-color: white;
+    width: 65%;
+    height: 500px;
+    margin-left: 40%;
+}
+  
+.text {
+    text-align: center;
+    padding-top: 220px;
+    margin-right: 35%;
+}
+
+.link {
+    width: 140px;
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.frame {
+    width: 100%;
+    height: 500px;
+    margin-left: 20%;
+    margin-top: 50px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    margin-right: 10%;
+}
+
