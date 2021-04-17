@@ -29,6 +29,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   //const res = await fetch('http://localhost:3000/api/links');
   //const data = await res.json();
   //const links = data?.links?.filter((link) => link.page === 'index') ?? null;
-  const links = ["https://www.example.com/"];
+  const links = ['https://www.creativelabsucla.com/'];
   return { props: { links } };
 };
