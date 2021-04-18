@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/Page.module.scss';
-import {capitalize, Link, PageProps} from '../utils';
+import {Link, PageProps} from '../utils';
 import Layout from './Layout';
 
 export default function PageTemplate(props: PageProps): JSX.Element {

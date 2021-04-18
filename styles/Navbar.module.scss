@@ -43,7 +43,7 @@
   cursor: pointer;
   position: relative;
 
-  &:after {
+  &::after {
     content: '';
     position: absolute;
     left: 0;
@@ -53,7 +53,7 @@
     transition: right 0.3s ease-out;
   }
 
-  &:hover:after {
+  &:hover::after {
     right: 0;
   }
 }

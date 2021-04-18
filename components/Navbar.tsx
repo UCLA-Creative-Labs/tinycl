@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+//import { useRouter } from 'next/router';
 import React from 'react';
 
 import styles from '../styles/Navbar.module.scss';
 
 function Navbar(): JSX.Element {
-  const router = useRouter();
-  const { path } = router.query;
+  //const router = useRouter();
+  //const { path } = router.query;
   const pages = [
     'Internal',
     'Resources',
