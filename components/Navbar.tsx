@@ -15,17 +15,16 @@ function Navbar(): JSX.Element {
 
   return (
     <nav id={styles.navbar}>
-      <div className={!path && styles.hide}>
-        <Link href='/'>
-          <div id={styles.back} >
-            <div id={styles.back_arrow}/> back to home
-          </div>
-        </Link>
-      </div>
+      <Link href='/'>
+        <div id={styles['logo-container']}>
+          <div id={styles.logo}/>
+          <h1>Creative Labs</h1>
+        </div>
+      </Link>
 
       <div id={styles.navigation}>
         {pages.map((page, i) =>
-          <a href={page.toLowerCase()} key={i}>{page}</a>,
+          <Link href={page.toLowerCase()} key={i}>{page}</Link>,
         )}
       </div>
     </nav>

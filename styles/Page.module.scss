@@ -6,4 +6,34 @@
   align-items: center;
   flex-direction: column;
   height: calc(100vh - #{$navbar-height});
+  margin-right: 10%;
+}
+
+#layout {
+  display: flex;
+  flex-direction: row;
+}
+
+#frame {
+  margin-top: 100px;
+  width: 80%;
+  order: -1;
+  margin-left: 10%;
+  margin-top: 90px;
+}
+
+#fillerText {
+  margin-left: 25%;
+  margin-top: 34%;
+}
+
+#list {
+  margin-top: 32px;
+}
+
+#listContainer {
+  margin-top: 100px;
+  list-style-type: none;
+  width: 200px;
+  margin-right: 50px;
 }
