@@ -27,15 +27,15 @@ export default function Layout(props: PageProps): JSX.Element {
         <div id={styles.layout}>
           <div id={styles.frame}>
             {hover !== -1
-            ? <iframe src={embedURL(props.links[hover].url)}/>
-            : <p id={styles.fillerText}>Hover over the links on the right to get a preview!</p>}
+              ? <iframe src={embedURL(props.links[hover].url)}/>
+              : <p id={styles.fillerText}>Hover over the links on the right to get a preview!</p>}
           </div>
           <div id={styles.container}>
-              {links && links.map(({displayName, url}: Link, i) => (
-                <a onMouseEnter={() => setHover(i)}
-                  onMouseLeave={() => setHover(-1)}
-                  rel="noreferrer" target='_blank' href={url} key={i}>{displayName}</a>
-              ))}
+            {links && links.map(({displayName, url}: Link, i) => (
+              <a onMouseEnter={() => setHover(i)}
+                onMouseLeave={() => setHover(-1)}
+                rel="noreferrer" target='_blank' href={url} key={i}>{displayName}</a>
+            ))}
           </div>
         </div>
       </main>

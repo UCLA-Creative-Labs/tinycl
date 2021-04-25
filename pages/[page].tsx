@@ -26,6 +26,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: {
     pageName: pageData?.pageName,
     links: pageData?.linksCollection?.items,
-    pages
+    pages,
   }};
 };

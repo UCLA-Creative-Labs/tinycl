@@ -6,15 +6,11 @@
   display: flex;
 }
 
-$frame-width: clamp(500px, 50vw, 720px);
-
 #frame {
   margin-top: calc(#{$navbar-height} + 100px);
   margin-left: $padding-horiz;
-
   width: $frame-width;
-  height: calc(#{$frame-width}* 2 / 3);
-
+  height: calc(#{$frame-width} * 2 / 3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +18,6 @@ $frame-width: clamp(500px, 50vw, 720px);
 
 #container {
   margin-top: calc(#{$navbar-height} + 100px);
-  
   margin-left: $padding-horiz;
   margin-right: $padding-horiz;
   display: flex;
@@ -41,6 +36,7 @@ $frame-width: clamp(500px, 50vw, 720px);
   #container {
     margin-top: $navbar-height;
     margin-left: $padding-horiz-mobile;
+
     a {
       font-size: 18px;
     }

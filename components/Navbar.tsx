@@ -25,7 +25,7 @@ function Navbar(props: NavbarProps): JSX.Element {
       <div id={styles.navigation}>
         {pages?.map((page, i) =>
           <Link href={page} key={i}
-            ><span id={path === page ? styles.viewing: ''}>{capitalize(page)}</span>
+          ><span id={path === page ? styles.viewing: ''}>{capitalize(page)}</span>
           </Link>,
         )}
       </div>
