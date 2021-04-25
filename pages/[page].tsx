@@ -28,6 +28,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       links: pageData?.linksCollection?.items,
       redirect: !pageData,
     },
-    revalidate: 60,
   };
 };

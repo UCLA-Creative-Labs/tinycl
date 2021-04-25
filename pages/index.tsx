@@ -19,6 +19,5 @@ export const getStaticProps: GetStaticProps = async () => {
       pageName: page?.pageName,
       links: page?.linksCollection?.items,
     },
-    revalidate: 60,
   };
 };
