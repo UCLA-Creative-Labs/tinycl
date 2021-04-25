@@ -25,7 +25,7 @@ const main = async () => {
   const redirects = data.linkCollection.items.reduce((acc, {redirectPath, url}) => {
     return `${acc}/${redirectPath} ${url}\n`;
   }, '');
-  writeFileSync(path.resolve(__dirname, '../_redirects'), `${redirects}\n/* / 200`);
+  writeFileSync(path.resolve(__dirname, '../_redirects'), `${redirects}\n/* /index.html 200`);
 }
 
 main();
