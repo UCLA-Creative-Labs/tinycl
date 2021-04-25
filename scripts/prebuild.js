@@ -3,11 +3,11 @@ const path = require('path');
 const fetch = require('node-fetch');
 require('dotenv').config({path: `${__dirname}/../.env.local`});
 
-const contentfulQuery = `{
-  redirectCollection {
+const linksQuery = `{
+  linkCollection {
     items {
-      url
       redirectPath
+      url
     }
   }
 }`;
@@ -19,10 +19,10 @@ const main = async () => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
     },
-    body: JSON.stringify({ query: contentfulQuery }),
+    body: JSON.stringify({ query: linksQuery }),
   });
   const {data} = await contentfulRes.json();
-  const redirects = data.redirectCollection.items.reduce((acc, {redirectPath, url}) => {
+  const redirects = data.linkCollection.items.reduce((acc, {redirectPath, url}) => {
     return `${acc}/${redirectPath} ${url}\n`;
   }, '');
   writeFileSync(path.resolve(__dirname, '../_redirects'), redirects);

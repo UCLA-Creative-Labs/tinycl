@@ -14,14 +14,6 @@ export interface PageProps {
   redirect?: boolean;
 }
 
-export const linksQuery = (link: unknown):unknown =>`{
-  linkCollection (where: {redirectPath: "${link}"}){
-    items {
-      url
-    }
-  }
-}`;
-
 export const pageQuery = `{
   pageCollection {
     items {
