@@ -1,17 +1,17 @@
 import Link from 'next/link';
-//import { useRouter } from 'next/router';
 import React from 'react';
 
 import styles from '../styles/Navbar.module.scss';
+import { capitalize } from '../utils';
 
-function Navbar(): JSX.Element {
-  //const router = useRouter();
-  //const { path } = router.query;
-  const pages = [
-    'Internal',
-    'Resources',
-    'Bloom',
-  ];
+interface NavbarProps {
+  pageName: string;
+  pages: string[];
+}
+
+function Navbar(props: NavbarProps): JSX.Element {
+  const pages = props.pages.filter((p) => p !== 'home');
+  const path = props.pageName;
 
   return (
     <nav id={styles.navbar}>
@@ -23,8 +23,10 @@ function Navbar(): JSX.Element {
       </Link>
 
       <div id={styles.navigation}>
-        {pages.map((page, i) =>
-          <Link href={page.toLowerCase()} key={i}>{page}</Link>,
+        {pages?.map((page, i) =>
+          <Link href={page} key={i}
+            ><span id={path === page ? styles.viewing: ''}>{capitalize(page)}</span>
+          </Link>,
         )}
       </div>
     </nav>

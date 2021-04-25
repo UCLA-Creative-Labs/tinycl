@@ -1,38 +1,48 @@
 @import 'variables';
 
-#container {
-  margin-top: calc(#{$navbar-height});
+#layout {
+  width: 100vw;
+  max-width: $max-width;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  height: calc(100vh - #{$navbar-height});
-  margin-right: 10%;
 }
 
-#layout {
-  display: flex;
-  flex-direction: row;
-}
+$frame-width: clamp(500px, 50vw, 720px);
 
 #frame {
-  margin-top: 100px;
-  width: 80%;
-  order: -1;
-  margin-left: 10%;
+  margin-top: calc(#{$navbar-height} + 100px);
+  margin-left: $padding-horiz;
+
+  width: $frame-width;
+  height: calc(#{$frame-width}* 2 / 3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#fillerText {
-  margin-left: 25%;
-  margin-top: 34%;
+#container {
+  margin-top: calc(#{$navbar-height} + 100px);
+  
+  margin-left: $padding-horiz;
+  margin-right: $padding-horiz;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    margin-bottom: 32px;
+  }
 }
 
-#list {
-  margin-top: 32px;
-}
+@media screen and (max-width: 600px) {
+  #frame {
+    display: none;
+  }
 
-#listContainer {
-  margin-top: 100px;
-  list-style-type: none;
-  width: 200px;
-  margin-right: 50px;
+  #container {
+    margin-top: $navbar-height;
+    margin-left: $padding-horiz-mobile;
+    a {
+      font-size: 18px;
+    }
+  }
 }

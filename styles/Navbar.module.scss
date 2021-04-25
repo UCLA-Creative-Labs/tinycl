@@ -11,7 +11,8 @@
 
 #logo-container {
   display: flex;
-  margin-left: 5%;
+  align-items: center;
+  margin-left: $padding-horiz;
   cursor: pointer;
 
   h1 {
@@ -21,8 +22,8 @@
 }
 
 #logo {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-image: url('../public/logo.svg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,13 +33,13 @@
   text-align: right;
   flex: 1;
   justify-content: center;
-  margin-right: 5%;
+  margin-right: $padding-horiz;
   margin-left: auto;
   color: map-get($colors, navbarText);
   transition: color $navbar-transition;
 }
 
-#navigation a {
+#navigation span {
   margin-left: 6%;
   cursor: pointer;
   position: relative;
@@ -55,5 +56,30 @@
 
   &:hover::after {
     right: 0;
+  }
+}
+
+#navigation > #viewing {
+  &::after {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  #logo-container {
+    margin-left: $padding-horiz-mobile;
+    h1 { display: none; }
+  }
+
+  #navigation {
+    margin-right: $padding-horiz-mobile;
+    span {
+      font-size: 16px;
+    }
   }
 }
