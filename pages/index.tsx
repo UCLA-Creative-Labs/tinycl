@@ -1,23 +1,22 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import PageTemplate from '../components/PageTemplate';
+import Layout from '../components/Layout';
 import {fetchContentful, PageProps} from '../utils';
 import {pageQuery} from '../utils/index';
 
-export default function Home(props: PageProps): JSX.Element {
+export default function Home({pageName, links, pages}: PageProps): JSX.Element {
 
   return (
-    <PageTemplate pageName = "Creative Labs" links = {props.links} redirect = {props.redirect} />
+    <Layout pageName={pageName} links={links} pages={pages} />
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchContentful(pageQuery);
+  const pages = data?.pageCollection?.items.map(({pageName}) => pageName);
   const page = data.pageCollection.items.find(({pageName}) => pageName === 'home');
-  return {
-    props: {
-      pageName: page?.pageName,
-      links: page?.linksCollection?.items,
-    },
-  };
+  return { props: {
+    links: page?.linksCollection?.items,
+    pages,
+  }};
 };

@@ -9,9 +9,9 @@ export interface Link {
 }
 
 export interface PageProps {
-  pageName?: string;
-  links?: Link[];
-  redirect?: boolean;
+  pageName: string;
+  pages: string[];
+  links: Link[];
 }
 
 export const pageQuery = `{

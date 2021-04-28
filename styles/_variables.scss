@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Mulish:wght@700;800&display=swap');
 
 // Fonts
-$heading-bold-font:  normal 700 2.6em 'Mulish', sans-serif;
-$heading-xbold-font: normal 800 2em 'Mulish', sans-serif;
+$heading-bold-font:  normal 700 2.2rem 'Mulish', sans-serif;
+$heading-xbold-font: normal 800 2rem 'Mulish', sans-serif;
 $logo-font: normal 700 1em 'Mulish', sans-serif;
-$body-reg-font:  normal 400 1.2em 'Lato', sans-serif;
-$body-bold-font: normal 700 1.4em 'Lato', sans-serif;
+$body-reg-font:  normal 400 1.2rem 'Lato', sans-serif;
+$body-bold-font: normal 700 1.4rem 'Lato', sans-serif;
 
 $logo-kerning: 0.1rem;
 $heading-kerning: 0.1rem;
@@ -15,7 +15,9 @@ $padding-horiz: 64px;
 $padding-horiz-mobile: 24px;
 $padding-vert:  48px;
 $padding-vert-mobile: 32px;
-$max-section-width: 1440px;
+$max-width: 1440px;
+
+$frame-width: clamp(500px, 50vw, 720px);
 
 // Colors
 $colors: (
