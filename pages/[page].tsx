@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import PageTemplate from '../components/PageTemplate';
+import Layout from '../components/Layout';
 import {pageQuery, PageProps, fetchContentful} from '../utils';
 
-export default function Page(props: PageProps): JSX.Element {
+export default function Page({pageName, pages, links}: PageProps): JSX.Element {
   return (
-    <PageTemplate pageName = {props.pageName} links = {props.links} redirect = {props.redirect} />
+    <Layout pageName={pageName} links={links} pages={pages} />
   );
 }
 
@@ -21,10 +21,11 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const {page} = params;
   const data = await fetchContentful(pageQuery);
+  const pages = data?.pageCollection?.items.map(({pageName}) => pageName);
   const pageData = data?.pageCollection?.items.find(({pageName}) => pageName === page);
   return { props: {
     pageName: pageData?.pageName,
     links: pageData?.linksCollection?.items,
-    redirect: !pageData,
+    pages,
   }};
 };
