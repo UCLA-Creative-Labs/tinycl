@@ -14,14 +14,6 @@ export interface PageProps {
   links: Link[];
 }
 
-export const linksQuery = (link: unknown):unknown =>`{
-  linkCollection (where: {redirectPath: "${link}"}){
-    items {
-      url
-    }
-  }
-}`;
-
 export const pageQuery = `{
   pageCollection {
     items {
@@ -37,7 +29,7 @@ export const pageQuery = `{
   }
 }`;
 
-export async function fetchContentful (queryInfo) {
+export async function fetchContentful (queryInfo: string) {
   const res = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`, {
     method: 'POST',
     headers: {
