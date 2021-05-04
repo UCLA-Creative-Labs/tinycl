@@ -6,6 +6,8 @@ import Navbar from './Navbar';
 
 export default function Layout(props: PageProps): JSX.Element {
   const {links, pages, pageName} = props;
+  const postTitle = pageName === '' ? '' : ` | ${pageName}`;
+
   const[hover, setHover] = useState(-1);
   function embedURL(stringUrl:string) : string{
     const url = new URL(stringUrl);
@@ -19,7 +21,7 @@ export default function Layout(props: PageProps): JSX.Element {
   return (
     <div style={{display: 'flex', justifyContent: 'center'}}>
       <Head>
-        <title>tinycl | {pageName}</title>
+        <title>tinycl{postTitle}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar pages={pages} pageName={pageName}/>
