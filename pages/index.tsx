@@ -15,7 +15,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchContentful(pageQuery);
   const pages = data?.pageCollection?.items.map(({pageName}) => pageName);
   const page = data.pageCollection.items.find(({pageName}) => pageName === 'home');
-  return { props: {
+  return {props: {
+    pageName: '',
     links: page?.linksCollection?.items,
     pages,
   }};
