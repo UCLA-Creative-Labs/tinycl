@@ -1,2 +1,2 @@
 [build]
-    command = "node scripts/prebuild.js && next build && next export"
+    command = "node scripts/prebuild.js && next build"
