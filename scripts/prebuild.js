@@ -26,6 +26,7 @@ const main = async () => {
     return `${acc}/${redirectPath} ${url}\n`;
   }, '');
   writeFileSync(path.resolve(__dirname, '../_redirects'), redirects);
+  console.log("redirect Path: "+path.resolve(__dirname, '../_redirects'));
 }
 
 main();
