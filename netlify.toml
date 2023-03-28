@@ -1,5 +1,0 @@
-[build]
-    command = "node scripts/prebuild.js && next build && next export"
-    publish = "."
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
