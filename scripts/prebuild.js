@@ -21,14 +21,13 @@ const main = async () => {
     },
     body: JSON.stringify({ query: linksQuery }),
   });
-  console.log("1: redirect Path: "+path.resolve(__dirname, '../_redirects'));
   const {data} = await contentfulRes.json();
-  console.log("2: redirect Path: "+path.resolve(__dirname, '../_redirects'));
   const redirects = data.linkCollection.items.reduce((acc, {redirectPath, url}) => {
     return `${acc}/${redirectPath} ${url}\n`;
   }, '');
-  writeFileSync(path.resolve(__dirname, '../_redirects'), redirects);
+  writeFileSync(path.resolve(__dirname, '../out/_redirects'), redirects);
   console.log("3: redirect Path: "+path.resolve(__dirname, '../_redirects'));
+  console.log("3: redirect Path: "+path.resolve(__dirname, '../out/_redirects'));
 }
 
 main();
