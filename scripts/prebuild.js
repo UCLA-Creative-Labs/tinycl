@@ -25,7 +25,9 @@ const main = async () => {
   const redirects = data.linkCollection.items.reduce((acc, {redirectPath, url}) => {
     return `${acc}/${redirectPath} ${url}\n`;
   }, '');
-  writeFileSync(path.resolve(__dirname, '../_redirects'), redirects);
+  // the next export command in yarn build will move the build folder to /out
+  // so we write to /out/_redirects
+  writeFileSync(path.resolve(__dirname, '../out/_redirects'), redirects);
 }
 
 main();
