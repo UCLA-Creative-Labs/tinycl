@@ -4,6 +4,9 @@
   width: 100vw;
   max-width: $max-width;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #frame {
@@ -26,6 +29,14 @@
   a {
     margin-bottom: 32px;
   }
+}
+
+#logo-main {
+  width: 200px;
+  height: 200px;
+  margin: 100px;
+  background-image: url('../public/logo_transparent.svg');
+  background-size: cover;
 }
 
 @media screen and (max-width: 600px) {
