@@ -19,16 +19,15 @@ $max-width: 1440px;
 
 $frame-width: clamp(500px, 50vw, 720px);
 
+// for footer
+$footer-height: 110px;
+$footer-height-mobile: 120px;
+
 // Colors
 $colors: (
   'black': #000,
   'white': #fff,
 );
-
-// Navbar
-$navbar-height: 110px;
-$navbar-height-mobile: 120px;
-$navbar-transition: 0.3s;
 
 // Export colors to JS
 :export {
