@@ -5,6 +5,7 @@ interface TCLButtonProps {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
+// TCL = TinyCL
 const TCLButton: FC<TCLButtonProps> = ({ onClick, children }) => {
   return (
     <button id={styles['tinycl-button']} onClick={onClick}>
