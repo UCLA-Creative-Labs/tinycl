@@ -1,46 +1,40 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React from 'react';
+import Footer from './Footer';
+import TCLButton from './TCLButton';
 import styles from '../styles/Page.module.scss';
-import {Link, PageProps} from '../utils';
-import Navbar from './Navbar';
+import { Link, PageProps } from '../utils';
 
 export default function Layout(props: PageProps): JSX.Element {
-  const {links, pages, pageName} = props;
+  const { links, pageName } = props;
   const postTitle = pageName === '' ? '' : ` | ${pageName}`;
 
-  const[hover, setHover] = useState(-1);
-  function embedURL(stringUrl:string) : string{
-    const url = new URL(stringUrl);
-    if(url.hostname === 'www.youtube.com') {
-      const queryPath = url.searchParams.get('v');
-      const newURL = 'https://' + url.hostname + '/embed/' + queryPath;
-      return newURL.toString();
-    } return stringUrl;
-  }
+  const aboutText =
+    'We are a community of UCLA creatives who are just trying to make their world a little cooler.';
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center'}}>
-      <Head>
-        <title>tinycl{postTitle}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Navbar pages={pages} pageName={pageName}/>
-      <main>
-        <div id={styles.layout}>
-          <div id={styles.frame}>
-            {hover !== -1
-              ? <iframe src={embedURL(props.links[hover].url)}/>
-              : <p id={styles.fillerText}>Hover over the links on the right to get a preview!</p>}
+    <div>
+      <div id={styles.background}>
+        <Head>
+          <title>tinycl{postTitle}</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main>
+          <div id={styles.layout}>
+            <div id={styles['logo-main']} />
+            <p id={styles.atcl}>@creativelabsucla</p>
+            <p id={styles['text-about']}>{aboutText}</p>
+            {links &&
+              links.map(({ displayName, url }: Link, i) => (
+                <TCLButton key={i} onClick={() => window.open(url)}>
+                  {displayName}
+                </TCLButton>
+              ))}
+            <p />
           </div>
-          <div id={styles.container}>
-            {links && links.map(({displayName, url}: Link, i) => (
-              <a onMouseEnter={() => setHover(i)}
-                onMouseLeave={() => setHover(-1)}
-                rel="noreferrer" target='_blank' href={url} key={i}>{displayName}</a>
-            ))}
-          </div>
-        </div>
-      </main>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 }
