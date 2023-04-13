@@ -39,7 +39,7 @@
 
 @media only screen and (max-width: 800px) {
   #footer {
-    width: 100vw;
+    width: 100%;
     display: inline-block;
     text-align: center;
     height: $footer-height-mobile;
@@ -54,7 +54,7 @@
   #footer-nav {
     text-align: center;
     padding: 0 0 1em;
-    overflow: scroll;
+    overflow: hidden;
   }
 
   #footer-nav a {

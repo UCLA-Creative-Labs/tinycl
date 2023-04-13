@@ -1,7 +1,7 @@
 @import 'variables';
 
 #layout {
-  width: 100vw;
+  width: 100%;
   max-width: $max-width;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@
 #text-about {
   font-family: 'Lato', sans-serif;
   margin-top: 20px;
-  max-width: 400px;
+  max-width: 100%;
   text-align: center;
 }
 
