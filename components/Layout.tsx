@@ -19,7 +19,7 @@ export default function Layout(props: PageProps): JSX.Element {
           <title>tinycl{postTitle}</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main>
+        <main id={styles.main}>
           <div id={styles.layout}>
             <div id={styles['logo-main']} />
             <p id={styles.atcl}>@creativelabsucla</p>
