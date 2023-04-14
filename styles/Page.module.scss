@@ -1,7 +1,14 @@
 @import 'variables';
 
+#main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 #layout {
-  width: 100vw;
+  width: 100%;
   max-width: $max-width;
   display: flex;
   justify-content: center;
