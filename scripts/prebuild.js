@@ -11,15 +11,15 @@ const main = async () => {
 
   const { data, error } = await supabase
     .from('links')
-    .select('redirectpath, url');
+    .select('redirect_path, url');
 
   if (error) {
     console.error('Supabase error:', error);
     process.exit(1);
   }
 
-  const redirects = (data ?? []).reduce((acc, { redirectpath, url }) => {
-    return `${acc}/${redirectpath} ${url}\n`;
+  const redirects = (data ?? []).reduce((acc, { redirect_path, url }) => {
+    return `${acc}/${redirect_path} ${url}\n`;
   }, '');
 
   writeFileSync(path.resolve(__dirname, '../out/_redirects'), redirects);
