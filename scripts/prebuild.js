@@ -1,33 +1,29 @@
 const { writeFileSync } = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
-require('dotenv').config({path: `${__dirname}/../.env.local`});
-
-const linksQuery = `{
-  linkCollection {
-    items {
-      redirectPath
-      url
-    }
-  }
-}`;
+require('dotenv').config({ path: `${__dirname}/../.env.local` });
 
 const main = async () => {
-  const contentfulRes = await fetch(`https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({ query: linksQuery }),
-  });
-  const {data} = await contentfulRes.json();
-  const redirects = data.linkCollection.items.reduce((acc, {redirectPath, url}) => {
-    return `${acc}/${redirectPath} ${url}\n`;
+  const { createClient } = require('@supabase/supabase-js');
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  );
+
+  const { data, error } = await supabase
+    .from('links')
+    .select('redirectpath, url');
+
+  if (error) {
+    console.error('Supabase error:', error);
+    process.exit(1);
+  }
+
+  const redirects = (data ?? []).reduce((acc, { redirectpath, url }) => {
+    return `${acc}/${redirectpath} ${url}\n`;
   }, '');
-  // the next export command in yarn build will move the build folder to /out
-  // so we write to /out/_redirects
+
   writeFileSync(path.resolve(__dirname, '../out/_redirects'), redirects);
-}
+  console.log('_redirects written successfully');
+};
 
 main();
