@@ -92,7 +92,7 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': ['error'],
 
     // Don't leave log statements littering the premises!
-    'no-console': ['error'],
+    'no-console': ['error', { allow: ['warn', 'error'] }],
 
     // Useless diff results
     'no-trailing-spaces': ['error'],
@@ -122,5 +122,10 @@ module.exports = {
         'method',
       ],
     }],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };
