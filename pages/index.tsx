@@ -1,21 +1,32 @@
-import { GetStaticProps } from 'next';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
-import { fetchLinks, PageProps } from '../utils';
+import { fetchLinks, Link } from '../utils';
+import { supabase } from '../utils/supabase';
 
-export default function Home({ pageName, links, pages }: PageProps): JSX.Element {
-  return (
-    <Layout pageName={pageName} links={links} pages={pages} />
-  );
+export default function Home(): JSX.Element {
+  const [links, setLinks] = useState<Link[]>([]);
+
+  useEffect(() => {
+    // Initial data fetch on mount
+    void fetchLinks().then(setLinks);
+
+    // Subscribe to any INSERT, UPDATE, or DELETE on the links table
+    const channel = supabase
+      .channel('links-realtime')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'links' },
+        () => {
+          // Re-fetch all links to stay in sync with the latest state
+          void fetchLinks().then(setLinks);
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, []);
+
+  return <Layout pageName="" links={links} pages={[]} />;
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const links = await fetchLinks();
-  return {
-    props: {
-      pageName: '',
-      links,
-      pages: [],
-    },
-  };
-};
