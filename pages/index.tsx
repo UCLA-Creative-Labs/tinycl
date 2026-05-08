@@ -8,7 +8,7 @@ export default function Home(): JSX.Element {
 
   useEffect(() => {
     // Initial data fetch on mount
-    fetchLinks().then(setLinks);
+    void fetchLinks().then(setLinks);
 
     // Subscribe to any INSERT, UPDATE, or DELETE on the links table
     const channel = supabase
@@ -18,13 +18,13 @@ export default function Home(): JSX.Element {
         { event: '*', schema: 'public', table: 'links' },
         () => {
           // Re-fetch all links to stay in sync with the latest state
-          fetchLinks().then(setLinks);
-        }
+          void fetchLinks().then(setLinks);
+        },
       )
       .subscribe();
 
     return () => {
-      supabase.removeChannel(channel);
+      void supabase.removeChannel(channel);
     };
   }, []);
 
