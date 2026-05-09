@@ -18,7 +18,9 @@ export async function fetchLinks(): Promise<Link[]> {
   const { supabase } = await import('./supabase');
   const { data, error } = await supabase
     .from('links')
-    .select('display_name, url, redirect_path');
+    .select('display_name, url, redirect_path, position, created_at')
+    .order('position', { ascending: true, nullsFirst: true })
+    .order('created_at', { ascending: false });
 
   if (error) {
     console.error('Supabase error:', error);
@@ -29,5 +31,5 @@ export async function fetchLinks(): Promise<Link[]> {
     displayName: row.display_name,
     url: row.url,
     redirect_path: row.redirect_path,
-  })).reverse();
+  }));
 }
