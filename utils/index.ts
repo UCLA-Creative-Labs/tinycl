@@ -19,8 +19,7 @@ export async function fetchLinks(): Promise<Link[]> {
   const { data, error } = await supabase
     .from('links')
     .select('display_name, url, redirect_path, position, created_at')
-    .order('position', { ascending: true, nullsFirst: true })
-    .order('created_at', { ascending: false });
+    .order('position', { ascending: false });
 
   if (error) {
     console.error('Supabase error:', error);
