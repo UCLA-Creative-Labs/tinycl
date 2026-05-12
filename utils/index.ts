@@ -30,5 +30,5 @@ export async function fetchLinks(): Promise<Link[]> {
     displayName: row.display_name,
     url: row.url,
     redirect_path: row.redirect_path,
-  }));
+  })).reverse();
 }
